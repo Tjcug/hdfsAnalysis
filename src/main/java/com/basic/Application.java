@@ -3,7 +3,11 @@ package com.basic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.MultipartConfigFactory;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
@@ -16,7 +20,7 @@ import javax.servlet.MultipartConfigElement;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ImportResource("applicationContext.xml")
-public class Application {
+public class Application extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer {
 
 //   设置文件传输的最大文件大小
     @Bean
@@ -29,5 +33,15 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class,args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
+    }
+
+    @Override
+    public void customize(ConfigurableEmbeddedServletContainer container) {
+        container.setPort(7777);
     }
 }

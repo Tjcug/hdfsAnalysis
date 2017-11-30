@@ -35,12 +35,12 @@
                       <div class="row">
                           <div id="modelRadiosGroup" class="col-md-12 text-center">
                               <label class="radio">
-                                  <input type="radio" name="modelRadios" id="readRadios" value="read" checked>
-                                  测试读取文件能力
+                                  <input type="radio" name="modelRadios" id="writeRadios" value="write" checked>
+                                  测试写入文件能力
                               </label>
                               <label class="radio">
-                                  <input type="radio" name="modelRadios" id="writeRadios" value="write">
-                                  测试写入文件能力
+                                  <input type="radio" name="modelRadios" id="readRadios" value="read">
+                                  测试读取文件能力
                               </label>
                           </div>
                       </div>
